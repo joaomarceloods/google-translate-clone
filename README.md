@@ -1,3 +1,13 @@
+# Google Translate Clone
+
+This app translates text from one language to another using Google Cloud Translate API.
+
+## User Interface and React Elements
+
+- Text Input
+- Language Select
+- Flip Button
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
