@@ -8,6 +8,12 @@ This app translates text from one language to another using Google Cloud Transla
 - Language Select
 - Flip Button
 
+## How Translation Works
+
+To translate texts, the app makes a POST request to Google Cloud Translation API [`/translate`](https://cloud.google.com/translate/docs/reference/rest/v2/translate) endpoint.
+Implementation is abstracted away in the custom `useTranslation` hook.
+I also tried to use Google Cloud API client library for Node.js (`@google-cloud/translate`) but that's backend-only.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

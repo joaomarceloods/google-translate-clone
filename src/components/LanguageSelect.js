@@ -1,9 +1,9 @@
 const LanguageSelect = ({ language, onChange }) => {
   return (
-    <select>
-      <option value="en" onChange={onChange} selected={language === "en"}>English</option>
-      <option value="es" onChange={onChange} selected={language === "es"}>Spanish</option>
-      <option value="fr" onChange={onChange} selected={language === "fr"}>French</option>
+    <select value={language} onChange={e => onChange(e.target.value)}>
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
     </select>
   )
 }
