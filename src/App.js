@@ -14,7 +14,7 @@ import TopAppBar from './components/TopAppBar';
 function App() {
   const [sourceLang, setSourceLang] = useState('en');
   const [targetLang, setTargetLang] = useState('es');
-  const [text, setText] = useState('Hello world!');
+  const [text, setText] = useState('');
   const translation = useTranslation(text, sourceLang, targetLang);
 
   return (
@@ -26,13 +26,13 @@ function App() {
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
               <LanguageSelect selectedLanguage={sourceLang} onChange={setSourceLang} />
-              <TextInput text={text} onChange={setText} />
+              <TextInput value={text} onChange={setText} placeholder="Enter text here" />
             </Stack>
           </Grid>
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
               <LanguageSelect selectedLanguage={targetLang} onChange={setTargetLang} />
-              <TextInput text={translation} disabled />
+              <TextInput value={translation} disabled placeholder="Translation will appear here" />
             </Stack>
           </Grid>
         </Grid>

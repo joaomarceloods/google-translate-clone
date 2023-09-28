@@ -1,14 +1,15 @@
 import { TextField } from "@mui/material";
 
-const TextInput = ({ text, onChange, disabled }) => {
+const TextInput = ({ value, placeholder, onChange, disabled }) => {
   return (
     <TextField
       multiline
       variant="filled"
       rows={4}
-      value={text}
+      value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
+      placeholder={placeholder}
     />
   );
 }
