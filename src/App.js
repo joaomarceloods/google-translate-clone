@@ -1,21 +1,43 @@
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 import { useState } from 'react';
+import { Container, CssBaseline, Stack } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+import useTranslation from './hooks/useTranslation';
 import LanguageSelect from './components/LanguageSelect';
 import TextInput from './components/TextInput';
-import useTranslation from './hooks/useTranslation';
+import TopAppBar from './components/TopAppBar';
 
 function App() {
   const [sourceLang, setSourceLang] = useState('en');
-  const [targetLang] = useState('es');
-  const [text, setText] = useState('Hello World!');
+  const [targetLang, setTargetLang] = useState('es');
+  const [text, setText] = useState('Hello world!');
   const translation = useTranslation(text, sourceLang, targetLang);
 
   return (
-    <div>
-      <LanguageSelect language={sourceLang} onChange={setSourceLang} />
-      <TextInput text={text} onChange={setText} />
-      <LanguageSelect language={targetLang} />
-      <TextInput text={translation} disabled />
-    </div>
+    <>
+      <CssBaseline />
+      <TopAppBar />
+      <Container>
+        <Grid container columnSpacing={2} rowSpacing={4} marginTop={2}>
+          <Grid xs={12} lg={6}>
+            <Stack spacing={1}>
+              <LanguageSelect selectedLanguage={sourceLang} onChange={setSourceLang} />
+              <TextInput text={text} onChange={setText} />
+            </Stack>
+          </Grid>
+          <Grid xs={12} lg={6}>
+            <Stack spacing={1}>
+              <LanguageSelect selectedLanguage={targetLang} onChange={setTargetLang} />
+              <TextInput text={translation} disabled />
+            </Stack>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 }
 

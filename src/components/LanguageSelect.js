@@ -1,11 +1,18 @@
-const LanguageSelect = ({ language, onChange }) => {
+import { FormControl, MenuItem, Select } from "@mui/material";
+
+const LanguageSelect = ({ selectedLanguage, onChange }) => {
   return (
-    <select value={language} onChange={e => onChange(e.target.value)}>
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
-    </select>
+    <FormControl size="small" variant="standard">
+      <Select
+        value={selectedLanguage}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        <MenuItem value="en">English</MenuItem>
+        <MenuItem value="es">Spanish</MenuItem>
+        <MenuItem value="fr">French</MenuItem>
+      </Select>
+    </FormControl>
   )
-}
+};
 
 export default LanguageSelect
