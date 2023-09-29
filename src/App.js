@@ -4,7 +4,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { useState } from 'react';
-import { Container, CssBaseline, Stack } from '@mui/material';
+import { SwapHoriz } from '@mui/icons-material';
+import { Container, CssBaseline, IconButton, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import useLanguages from './hooks/useLanguages';
 import useTranslation from './hooks/useTranslation';
@@ -23,23 +24,32 @@ function App() {
   const sourcePlaceholder = useTranslation('Enter text here', 'en', clientLanguage);
   const targetPlaceholder = useTranslation('Translation will appear here', 'en', clientLanguage);
 
+  const swapLanguages = () => {
+    setSourceLang(targetLang);
+    setTargetLang(sourceLang);
+    setText(translation);
+  }
+
   return (
     <>
       <CssBaseline />
       <TopAppBar />
       <Container>
-        <Grid container columnSpacing={2} rowSpacing={4} marginTop={2}>
-          <Grid xs={12} lg={6}>
-            <Stack spacing={1}>
+        <Grid container columnSpacing={2} rowSpacing={1} marginTop={2}>
+          <Grid xs={12} direction="row">
+            <Stack direction="row" alignItems="center" spacing={1}>
               <LanguageSelect languages={languages} selectedLanguage={sourceLang} onChange={setSourceLang} />
-              <TextInput value={text} onChange={setText} placeholder={sourcePlaceholder} />
+              <IconButton aria-label="swap languages" onClick={swapLanguages}>
+                <SwapHoriz />
+              </IconButton>
+              <LanguageSelect languages={languages} selectedLanguage={targetLang} onChange={setTargetLang} />
             </Stack>
           </Grid>
           <Grid xs={12} lg={6}>
-            <Stack spacing={1}>
-              <LanguageSelect languages={languages} selectedLanguage={targetLang} onChange={setTargetLang} />
-              <TextInput value={translation} disabled placeholder={targetPlaceholder} />
-            </Stack>
+            <TextInput value={text} onChange={setText} placeholder={sourcePlaceholder} />
+          </Grid>
+          <Grid xs={12} lg={6}>
+            <TextInput value={translation} disabled placeholder={targetPlaceholder} />
           </Grid>
         </Grid>
       </Container>

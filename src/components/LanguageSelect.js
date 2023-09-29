@@ -8,7 +8,7 @@ const LanguageSelect = ({ languages, selectedLanguage, onChange }) => {
   ))
 
   return (
-    <FormControl size="small" variant="standard">
+    <FormControl size="small" variant="standard" fullWidth>
       <Select
         value={selectedLanguage}
         onChange={(e) => onChange(e.target.value)}

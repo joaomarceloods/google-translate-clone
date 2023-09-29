@@ -4,6 +4,7 @@ const TextInput = ({ value, placeholder, onChange, disabled }) => {
   return (
     <TextField
       multiline
+      fullWidth
       variant="filled"
       rows={4}
       value={value}
