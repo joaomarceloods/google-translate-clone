@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import { useState } from 'react';
 import { Container, CssBaseline, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import useLanguages from './hooks/useLanguages';
 import useTranslation from './hooks/useTranslation';
 import LanguageSelect from './components/LanguageSelect';
 import TextInput from './components/TextInput';
@@ -17,6 +18,9 @@ function App() {
   const [text, setText] = useState('');
   const translation = useTranslation(text, sourceLang, targetLang);
 
+  const clientLanguage = navigator.language?.substring(0, 2) || 'en'
+  const languages = useLanguages(clientLanguage);
+
   return (
     <>
       <CssBaseline />
@@ -25,13 +29,13 @@ function App() {
         <Grid container columnSpacing={2} rowSpacing={4} marginTop={2}>
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
-              <LanguageSelect selectedLanguage={sourceLang} onChange={setSourceLang} />
+              <LanguageSelect languages={languages} selectedLanguage={sourceLang} onChange={setSourceLang} />
               <TextInput value={text} onChange={setText} placeholder="Enter text here" />
             </Stack>
           </Grid>
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
-              <LanguageSelect selectedLanguage={targetLang} onChange={setTargetLang} />
+              <LanguageSelect languages={languages} selectedLanguage={targetLang} onChange={setTargetLang} />
               <TextInput value={translation} disabled placeholder="Translation will appear here" />
             </Stack>
           </Grid>

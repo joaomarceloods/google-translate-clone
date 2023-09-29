@@ -1,15 +1,19 @@
 import { FormControl, MenuItem, Select } from "@mui/material";
 
-const LanguageSelect = ({ selectedLanguage, onChange }) => {
+const LanguageSelect = ({ languages, selectedLanguage, onChange }) => {
+  const menuItems = languages.map((language) => (
+    <MenuItem key={language.language} value={language.language}>
+      {language.name}
+    </MenuItem>
+  ))
+
   return (
     <FormControl size="small" variant="standard">
       <Select
         value={selectedLanguage}
         onChange={(e) => onChange(e.target.value)}
       >
-        <MenuItem value="en">English</MenuItem>
-        <MenuItem value="es">Spanish</MenuItem>
-        <MenuItem value="fr">French</MenuItem>
+        {menuItems}
       </Select>
     </FormControl>
   )
