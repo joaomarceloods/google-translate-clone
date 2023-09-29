@@ -20,6 +20,8 @@ function App() {
 
   const clientLanguage = navigator.language?.substring(0, 2) || 'en'
   const languages = useLanguages(clientLanguage);
+  const sourcePlaceholder = useTranslation('Enter text here', 'en', clientLanguage);
+  const targetPlaceholder = useTranslation('Translation will appear here', 'en', clientLanguage);
 
   return (
     <>
@@ -30,13 +32,13 @@ function App() {
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
               <LanguageSelect languages={languages} selectedLanguage={sourceLang} onChange={setSourceLang} />
-              <TextInput value={text} onChange={setText} placeholder="Enter text here" />
+              <TextInput value={text} onChange={setText} placeholder={sourcePlaceholder} />
             </Stack>
           </Grid>
           <Grid xs={12} lg={6}>
             <Stack spacing={1}>
               <LanguageSelect languages={languages} selectedLanguage={targetLang} onChange={setTargetLang} />
-              <TextInput value={translation} disabled placeholder="Translation will appear here" />
+              <TextInput value={translation} disabled placeholder={targetPlaceholder} />
             </Stack>
           </Grid>
         </Grid>
