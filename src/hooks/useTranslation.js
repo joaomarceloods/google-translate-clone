@@ -25,7 +25,9 @@ const useTranslation = (text, source, target) => {
       }
     }
 
-    if (text) {
+    if (source === target) {
+      setTranslation(text)
+    } else if (text) {
       translateText()
     } else {
       setTranslation("")
