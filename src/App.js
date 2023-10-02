@@ -22,6 +22,12 @@ function App() {
 
   const clientLanguage = navigator.language?.substring(0, 2) || 'en'
   const languages = useLanguages(clientLanguage);
+
+  /**
+    Display placeholders in the client's language.
+    Of course this isn't optimal nor production-ready. It makes an API call for a hard-coded piece of text.
+    It could be stored in the app's source code. It's just a quick-and-dirty workaround.
+   */
   const sourcePlaceholder = useTranslation('Enter text here', 'en', clientLanguage);
   const targetPlaceholder = useTranslation('Translation will appear here', 'en', clientLanguage);
 
