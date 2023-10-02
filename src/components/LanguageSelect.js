@@ -75,10 +75,10 @@ const LanguageSelect = ({
           {open ? <ExpandLess /> : <ExpandMore />}
         </Button>
         <Portal container={dropdownContainerRef.current}>
-          <Container disableGutters role="presentation">
-            <Box position="relative" zIndex={1}>
-              <Box position="absolute" width="100%">
-                <Grow in={open} sx={{ transformOrigin: "50% 0 0" }}>
+          <Grow in={open} sx={{ transformOrigin: "50% 0 0" }}>
+            <Container disableGutters role="presentation">
+              <Box position="relative" zIndex={1}>
+                <Box position="absolute" width="100%">
                   <Paper elevation={3} id={popoverId}>
                     <TextField
                       fullWidth
@@ -97,10 +97,10 @@ const LanguageSelect = ({
                       {menuItems}
                     </Grid>
                   </Paper>
-                </Grow>
+                </Box>
               </Box>
-            </Box>
-          </Container>
+            </Container>
+          </Grow>
         </Portal>
       </Box>
     </ClickAwayListener>
