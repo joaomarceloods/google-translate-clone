@@ -2,11 +2,27 @@
 
 This app translates text from one language to another using Google Cloud Translate API.
 
-## User Interface and React Elements
+## What This Project Demonstrates
 
-- Text Input
-- Language Select
-- Flip Button
+- Understanding of React essentials
+- Creating custom components and hooks
+- Making and debouncing API requests
+- Using a component library (MUI)
+
+## Setup
+
+Create a `.env.local` file and enter your [Google Cloud API key](https://support.google.com/googleapi/answer/6158862?hl=en) like this:
+
+```
+REACT_APP_GOOGLE_TRANSLATE_API_KEY=your-key-here
+```
+
+Then start the app:
+
+```
+npm install
+npm run start
+```
 
 ## How Translation Works
 
