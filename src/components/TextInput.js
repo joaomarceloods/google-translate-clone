@@ -5,12 +5,13 @@ const TextInput = ({ value, placeholder, onChange, disabled }) => {
     <TextField
       multiline
       fullWidth
-      variant="filled"
+      variant="outlined"
       rows={4}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       placeholder={placeholder}
+      inputProps={{ style: { fontSize: '1.5rem' } }}
     />
   );
 }
