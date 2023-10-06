@@ -8,6 +8,8 @@ This app translates text from one language to another using Google Cloud Transla
 - Creating custom components and hooks
 - Making and debouncing API requests
 - Using a component library (MUI)
+- Testing with React Testing Library
+- Mocking networks requests in tests with MSW
 
 ## Setup
 
@@ -21,7 +23,7 @@ Then start the app:
 
 ```
 npm install
-npm run start
+npm start
 ```
 
 ## How Translation Works
