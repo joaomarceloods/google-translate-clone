@@ -4,7 +4,6 @@ import {
   Button,
   ClickAwayListener,
   Container,
-  Grid,
   Grow,
   Paper,
   Portal,
@@ -49,18 +48,27 @@ const LanguageSelect = ({
         language.language.toLowerCase().includes(search.toLowerCase())
       );
     })
-    .map((language) => (
-      <Grid key={language.language} xs={12} md={3} lg={2} item>
-        <Button
-          fullWidth
-          sx={{ justifyContent: "left" }}
-          value={language.language}
-          onClick={() => handleClickLanguage(language.language)}
-        >
-          {language.name}
-        </Button>
-      </Grid>
-    ));
+    .map((language) => {
+      const selected = language.language === selectedLanguage;
+      return (
+        <Box key={language.language} display="inline">
+          <Button
+            fullWidth
+            size="small"
+            value={language.language}
+            onClick={() => handleClickLanguage(language.language)}
+            variant={selected ? "contained" : "text"}
+            sx={{
+              justifyContent: "left",
+              textTransform: "none",
+              fontWeight: selected ? 600 : 400,
+            }}
+          >
+            {language.name}
+          </Button>
+        </Box>
+      );
+    });
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -79,23 +87,21 @@ const LanguageSelect = ({
             <Container disableGutters role="presentation">
               <Box position="relative" zIndex={1}>
                 <Box position="absolute" width="100%">
-                  <Paper elevation={3} id={popoverId}>
+                  <Paper elevation={3} id={popoverId} sx={{ marginBottom: 3 }}>
                     <TextField
                       fullWidth
                       variant="standard"
-                      placeholder="Search language"
+                      placeholder="Search language…"
                       value={search}
                       onChange={(event) => setSearch(event.target.value)}
-                      padding={2}
+                      InputProps={{ sx: { px: 3, py: 1 } }}
                     />
-                    <Grid
-                      container
-                      maxHeight="80vh"
-                      flexDirection="column"
+                    <Box
                       padding={2}
+                      sx={{ columnCount: { xs: 1, sm: 3, md: 4, lg: 6 } }}
                     >
                       {menuItems}
-                    </Grid>
+                    </Box>
                   </Paper>
                 </Box>
               </Box>
