@@ -8,7 +8,7 @@ import { SwapHoriz } from '@mui/icons-material';
 import { Box, Container, CssBaseline, IconButton, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import useLanguages from './hooks/useLanguages';
-import useTranslation from './hooks/useTranslation';
+import { useTranslation, useTranslationDebounced } from './hooks/useTranslation';
 import LanguageSelect from './components/LanguageSelect';
 import TextInput from './components/TextInput';
 import TopAppBar from './components/TopAppBar';
@@ -17,7 +17,7 @@ function App() {
   const [sourceLang, setSourceLang] = useState('en');
   const [targetLang, setTargetLang] = useState('es');
   const [text, setText] = useState('');
-  const translation = useTranslation(text, sourceLang, targetLang);
+  const translation = useTranslationDebounced(text, sourceLang, targetLang);
   const dropdownContainerRef = useRef(null)
 
   const clientLanguage = navigator.language?.substring(0, 2) || 'en'
@@ -25,8 +25,9 @@ function App() {
 
   /**
     Display placeholders in the client's language.
-    Of course this isn't optimal nor production-ready. It makes an API call for a hard-coded piece of text.
-    It could be stored in the app's source code. It's just a quick-and-dirty workaround.
+    Of course this isn't ideal, since it makes an API call for a hard-coded piece of text.
+    Ideally, all placeholder translations would be stored in the app's source code.
+    This is just a conscious quick-and-dirty workaround.
    */
   const sourcePlaceholder = useTranslation('Enter text here', 'en', clientLanguage);
   const targetPlaceholder = useTranslation('Translation will appear here', 'en', clientLanguage);
